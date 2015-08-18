@@ -35,3 +35,14 @@ describe('seeing details for a single list', {:type => :feature}) do
     expect(page).to have_content(test_task.description())
   end
 end
+
+describe('adding tasks to the list', {:type => :feature}) do
+  it('allows a user to add a task to a list') do
+    test_list = List.new({:name => 'School Stuff', :id => nil})
+    test_list.save()
+    visit("/lists/#{test_list.id()}")
+    fill_in("Description", {:with => "Learn SQL"})
+    click_button("Add task")
+    expect(page).to have_content("Your task has been added to your list!!!")
+  end
+end
