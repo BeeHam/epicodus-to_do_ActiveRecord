@@ -27,7 +27,7 @@ describe(Task) do
 
   describe("#id") do
     it("sets its ID when you save it") do
-      test_task = Task.new({:description => "learn SQL", :list_id => 1, :due_date => '2015-08-31'})
+      test_task = Task.new({:description => "learn SQL", :list_id => 1, :due_date => '2015-08-31', :id => nil})
       test_task.save()
       expect(test_task.id()).to(be_an_instance_of(Fixnum))
     end
@@ -73,7 +73,7 @@ describe(Task) do
       task3.save()
       task4 = Task.new({:description => "homework", :list_id => 2, :due_date => '2015-08-15', :id => nil})
       task4.save()
-      expect(Task.()).to(eq([task3, task4, task2, task1]))
+      expect(Task.sort()).to(eq([task3, task4, task2, task1]))
     end
   end
 end
