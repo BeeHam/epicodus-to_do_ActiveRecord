@@ -48,5 +48,15 @@ describe(List) do
     end
   end
 
-
+  describe('#tasks') do
+    it('returns an array of tasks for that list') do
+      list = List.new({:name => "Epicodus stuff", :id => nil})
+      list.save()
+      test_task1 = Task.new({:description => "learn SQL", :list_id => list.id(), :due_date => '2015-08-31', :id => nil})
+      test_task1.save()
+      test_task2 = Task.new({:description => "Review Ruby", :list_id => list.id(), :due_date => '2015-08-31', :id => nil})
+      test_task2.save()
+      expect(list.tasks()).to(eq([test_task1, test_task2]))
+    end
+  end
 end
