@@ -3,14 +3,6 @@ require('task')
 require('pg')
 require('spec_helper')
 
-# DB = PG.connect({:dbname => 'to_do_test'})
-#
-# RSpec.configure do |config|
-#   config.after(:each) do
-#     DB.exec("DELETE FROM tasks *")
-#   end
-# end
-
 describe(Task) do
   describe("#==") do
     it("is the same task if it has the same description") do
@@ -35,7 +27,7 @@ describe(Task) do
 
   describe("#id") do
     it("sets its ID when you save it") do
-      test_task = Task.new({:description => "learn SQL", :list_id => 1, :due_date => '2015-08-31', :id => nil})
+      test_task = Task.new({:description => "learn SQL", :list_id => 1, :due_date => '2015-08-31'})
       test_task.save()
       expect(test_task.id()).to(be_an_instance_of(Fixnum))
     end
